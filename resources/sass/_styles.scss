@@ -1,0 +1,151 @@
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+.color-fourth,
+.font-color,
+body {
+    color: #5d5468;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Gothic", Arial, sans-serif, Helvetica, sans-serif;
+}
+
+
+.pricing__section {
+    ul {
+        &.ordered-lists {
+            min-height: 170px;
+        }
+
+        &.list-styled-custom {
+            padding-left: 0.5rem;
+            list-style-type: none;
+        }
+        li {
+            line-height: 2;
+            &::before {
+                content: "";
+                background-image: url(/images/svg/lists.svg);
+                background-size: contain;
+                display: inline-block;
+                width: 1em;
+                height: 1em;
+                position: relative;
+                top: 0.1rem;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    .buy__button {
+        .btn {
+            width: -webkit-fill-available;
+        }
+    }
+}
+
+.banner-page {
+    .about-banner {
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: bottom;
+    }
+}
+
+.about__section {
+    background-color: #f3f2f3;
+    .card {
+        background-color: #f3f2f3;
+        .img__container {
+            margin: 15px 0;
+        }
+        .icon__position {
+            position: absolute;
+            left: -20px;
+            top: 55px;
+        }
+        .profile__summary {
+            min-height: 120px;
+            margin: 10px 0;
+        }
+    }
+}
+
+.avatar-upload {
+    position: relative;
+    max-width: 150px;
+    margin: 15px auto;
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+        input {
+            display: none;
+            + label {
+                display: inline-block;
+                width: 34px;
+                height: 34px;
+                margin-bottom: 0;
+                border-radius: 100%;
+                background: #ffffff;
+                border: 1px solid transparent;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                cursor: pointer;
+                font-weight: normal;
+                transition: all 0.2s ease-in-out;
+                &:hover {
+                    background: #f1f1f1;
+                    border-color: #d6d6d6;
+                }
+                &:after {
+                    content: "";
+                    background-image: url(/images/svg/pencil.svg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    width: 16px;
+                    height: 16px;
+                    color: #757575;
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                    right: 0;
+                    text-align: center;
+                    margin: auto;
+                }
+            }
+        }
+    }
+    .avatar-preview {
+        width: 145px;
+        height: 145px;
+        position: relative;
+        border-radius: 100%;
+        border: 6px solid #f8f8f8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        > div {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+}
