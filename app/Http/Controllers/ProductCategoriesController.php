@@ -26,8 +26,8 @@ class ProductCategoriesController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'desc')->paginate(10);
-        return view('dashboard.products.index', ['products' => $products]);
+        $categories = ProductCategory::paginate(20);
+        return view('dashboard.categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -37,8 +37,8 @@ class ProductCategoriesController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::all();
-        return view('dashboard.products.create', ['categories' => $categories]);
+        $categories = ProductCategory::get();
+        return view('dashboard.categories.create', ['categories' => $categories]);
     }
 
     /**
@@ -50,34 +50,17 @@ class ProductCategoriesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'             => 'required|min:1|max:64',
-            'subname'          => 'required',
-            'product_body'           => 'required',
-            'short_description' => 'required',
+            'category_name' => 'required|min:1|max:64',
         ]);
 
-        $product = new Product();
-        $product->name = $request->input('name');
-        $product->meta_desc = $request->input('meta_desc');
-        $product->seo_keywords = $request->input('seo_keywords');
-        $product->short_description = $request->input('short_description');
-        $product->product_body = $request->input('product_body');
-        $product->seo_name = $request->input('seo_name');
-        $product->is_published = $request->input('is_published');
-        if (!$request->input('producted_at')) {
-            $product->producted_at = Carbon::now()->toDateTimeString();
-        } else {
-            $product->producted_at = $request->input('producted_at');
-        }
-        $product->save();
-        $category = $request->input('category_id');
-        if ($category) {
-            foreach ($category as $cat) {
-                $product->categories()->attach($cat);
-            }
-        }
-        $request->session()->flash('message', 'Successfully created product');
-        return redirect()->route('products.index');
+        $user = auth()->user();
+        $category = new ProductCategory();
+        $category->category_name     = $request->input('category_name');
+        $category->category_description     = $request->input('category_description');
+        $category->created_by = $user->id;
+        $category->save();
+        $request->session()->flash('message', 'Successfully created category');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -88,8 +71,8 @@ class ProductCategoriesController extends Controller
      */
     public function show($id)
     {
-        $product = Product::with('user')->find($id);
-        return view('dashboard.products.show', ['product' => $product]);
+        $product = ProductCategory::with('user')->find($id);
+        return view('dashboard.categories.show', ['product' => $product]);
     }
 
     /**
@@ -98,12 +81,10 @@ class ProductCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Product $Product)
+    public function edit($id)
     {
-        
-        $product = Product::find($id);
-        $categories = ProductCategory::get();
-        return view('dashboard.products.edit', ['categories' => $categories, 'product' => $product]);
+        $category = ProductCategory::find($id);
+        return view('dashboard.categories.edit', ['category' => $category]);
     }
 
     /**
@@ -113,32 +94,20 @@ class ProductCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Product $Product)
+    public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name'             => 'required|min:1|max:64',
-            'product_body'           => 'required',
-            'short_description' => 'required',
+            'category_name'             => 'required|min:1|max:64',
+            'category_description'          => 'required',
         ]);
-
-        $product = Product::find($id);
-        $product->name     = $request->input('name');
-        $product->meta_desc     = $request->input('meta_desc');
-        $product->short_description     = $request->input('short_description');
-        $product->product_body   = $request->input('product_body');
-        $product->seo_name = $request->input('seo_name');
-        $product->is_published = $request->input('is_published');
-        $product->save();
-
-        $product->categories()->detach();
-        $category = $request->input('category_id');
-        if ($category) {
-            foreach ($category as $cat) {
-                $product->categories()->attach($cat);
-            }
-        }
-        $request->session()->flash('message', 'Successfully edited note');
-        return redirect()->route('products.index');
+        $category = ProductCategory::find($id);
+        $slug = Str::slug($request->input('slug'), '-');
+        $category->category_name = $request->input('category_name');
+        $category->category_description = $request->input('category_description');
+        $category->slug = $slug;
+        $category->save();
+        $request->session()->flash('message', 'Successfully edited category');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -149,12 +118,10 @@ class ProductCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        if ($product) {
-            $product->status = 'Deleted';
-            $product->delete();
+        $category = ProductCategory::find($id);
+        if ($category) {
+            $category->delete();
         }
-        $product->categories()->detach();
-        return redirect()->route('products.index');
+        return redirect()->route('categories.index');
     }
 }
