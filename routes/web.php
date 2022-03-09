@@ -21,10 +21,8 @@ Route::get('/login', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/products', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::prefix('/shop')->group(function () {
         Route::resource('products', '\App\Http\Controllers\ProductController');
-    });
+        Route::resource('categories', '\App\Http\Controllers\CategoryController');
 });

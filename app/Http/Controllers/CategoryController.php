@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
-class ProductCategoriesController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,7 +27,7 @@ class ProductCategoriesController extends Controller
      */
     public function index()
     {
-        $categories = ProductCategory::paginate(20);
+        $categories = Category::paginate(20);
         return view('dashboard.categories.index', ['categories' => $categories]);
     }
 
@@ -37,7 +38,7 @@ class ProductCategoriesController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::get();
+        $categories = Category::get();
         return view('dashboard.categories.create', ['categories' => $categories]);
     }
 
@@ -54,10 +55,9 @@ class ProductCategoriesController extends Controller
         ]);
 
         $user = auth()->user();
-        $category = new ProductCategory();
+        $category = new Category();
         $category->category_name     = $request->input('category_name');
         $category->category_description     = $request->input('category_description');
-        $category->created_by = $user->id;
         $category->save();
         $request->session()->flash('message', 'Successfully created category');
         return redirect()->route('categories.index');
@@ -71,8 +71,8 @@ class ProductCategoriesController extends Controller
      */
     public function show($id)
     {
-        $product = ProductCategory::with('user')->find($id);
-        return view('dashboard.categories.show', ['product' => $product]);
+        $category = Category::find($id);
+        return view('dashboard.categories.show', ['category' => $category]);
     }
 
     /**
@@ -83,7 +83,7 @@ class ProductCategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = ProductCategory::find($id);
+        $category = Category::find($id);
         return view('dashboard.categories.edit', ['category' => $category]);
     }
 
@@ -100,7 +100,7 @@ class ProductCategoriesController extends Controller
             'category_name'             => 'required|min:1|max:64',
             'category_description'          => 'required',
         ]);
-        $category = ProductCategory::find($id);
+        $category = Category::find($id);
         $slug = Str::slug($request->input('slug'), '-');
         $category->category_name = $request->input('category_name');
         $category->category_description = $request->input('category_description');
@@ -118,7 +118,7 @@ class ProductCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = ProductCategory::find($id);
+        $category = Category::find($id);
         if ($category) {
             $category->delete();
         }

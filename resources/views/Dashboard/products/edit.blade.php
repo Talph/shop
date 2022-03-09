@@ -1,4 +1,4 @@
-@extends('backend.layouts.dashboard')
+@extends('layouts.dashboard')
 
 @section('content')
 
@@ -20,51 +20,25 @@
                     <div class="card card-collapsable">
                         <a class="card-header" href="#collapseCardExample" data-toggle="collapse" role="button"
                             aria-expanded="true" aria-controls="collapseCardExample">
-                            {{ __('Edit') }} : {{ $product->title }}
+                            {{ __('Edit') }} : {{ $product->name }}
                         </a>
                         <div class="collapse show" id="collapseCardExample">
                             <div class="card-body">
 
                                 <div class="form-group row">
                                     <div class="col">
-                                        <label>Title</label>
-                                        <input class="form-control" type="text" placeholder="{{ __('Title') }}"
-                                            name="title" value="{{ $product->title }}" required autofocus>
+                                        <label>Name</label>
+                                        <input class="form-control" type="text" placeholder="{{ __('name') }}"
+                                            name="name" value="{{ $product->name }}" required autofocus>
                                     </div>
                                 </div>
-
                                 <div class="form-group row">
-                                    <div class="col">
-                                        <label>Subtitle</label>
-                                        <input class="form-control" type="text" placeholder="{{ __('Subtitle') }}"
-                                            name="subtitle" value="{{ $product->subtitle }}" required autofocus>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col">
-                                        <label>Content</label>
-                                        <textarea class="form-control" id="summernote" name="product_body" rows="9"
-                                            placeholder="{{ __('Content..') }}" required>
-                                        {{ $product->product_body }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card mt-4 card-collapsable">
-                        <a class="card-header" href="#collapseCardExcerpt" data-toggle="collapse" role="button"
-                            aria-expanded="true" aria-controls="collapseCardExcerpt">
-                            {{ __('Excerpt') }}
-                        </a>
-                        <div class="collapse show" id="collapseCardExcerpt">
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <textarea class="form-control" id="textarea-excerpt" name="short_description"
-                                        rows="4" placeholder="{{ __('Summary..') }}"
-                                        required>{{ $product->short_description}}</textarea>
-                                </div>
+                                                                <div class="col">
+                                                                    <label>Slug</label>
+                                                                    <input class="form-control" id="J_slug" type="text" placeholder="{{ __('$product->slug') }}" name="slug"
+                                                                        value="{{ $product->slug }}" required autofocus>
+                                                                </div>
+                                                            </div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +53,7 @@
                                 <div class="form-group row">
                                     <label>Meta description</label>
                                     <textarea class="form-control" id="textarea-meta_desc" name="meta_desc" rows="4"
-                                        placeholder="{{ __('description..') }}" required>{{$product->meta_desc}}</textarea>
+                                        placeholder="{{ __('description..') }}" required>{{$product->meta_description}}</textarea>
                                     <small>A maximum of 160 characters are recommended</small>
                                 </div>
                             </div>
@@ -95,9 +69,9 @@
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label>Target keywords</label>
-                                    <input type="text" class="form-control" name="seo_keywords" rows="4"
+                                    <input type="text" class="form-control" name="meta_keywords" rows="4"
                                         placeholder="{{ __('keywords...') }}" required
-                                        value="{{$product->seo_keywords}}" />
+                                        value="{{$product->meta_keywords}}" />
                                     <small>Separate keywords with a comma eg 'Best shop, Shoes'</small>
                                 </div>
                             </div>
@@ -129,24 +103,6 @@
                         </div>
                     </div>
 
-
-                    <div class="card mt-4 card-collapsable">
-                        <a class="card-header" href="#collapseCardDate" data-toggle="collapse" role="button"
-                            aria-expanded="true" aria-controls="collapseCardDate">
-                            {{ __('Date') }}
-                        </a>
-                        <div class="collapse show" id="collapseCardDate">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>Publish date</label>
-                                    <input type="date" class="form-control" name="posted_at" />
-                                </div>
-                                Posted on: {{$product->created_at}}
-                                Edited on: {{$product->updated_at}}
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="card mt-4 card-collapsable">
                         <a class="card-header" href="#collapseCardCategory" data-toggle="collapse" role="button"
                             aria-expanded="true" aria-controls="collapseCardCategory">
@@ -173,25 +129,22 @@
                         </div>
                     </div>
 
-                    <div class="card mt-4 card-collapsable">
-                        <a class="card-header" href="#collapseCardImage" data-toggle="collapse" role="button"
-                            aria-expanded="true" aria-controls="collapseCardImage">
-                            {{ __('Featured image') }}
-                        </a>
-                        <div class="collapse show" id="collapseCardImage">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <div class="col">
-                                        {{-- <label>Featured Image</label> --}}
-                                        <br />
-
-                                        <input type="file" class="custom-form-input" name="img_name">
-
-                                    </div>
+<div class="card mt-4 card-collapsable">
+                    <a class="card-header" href="#collapseCardImage" data-toggle="collapse" role="button" aria-expanded="true"
+                        aria-controls="collapseCardImage">
+                        {{ __('Product Variants') }}
+                    </a>
+                    <div class="collapse show" id="collapseCardImage">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="col">
+                                    <br />
+                
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
                 </div>
         </form>

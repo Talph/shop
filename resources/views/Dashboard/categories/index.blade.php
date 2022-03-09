@@ -13,14 +13,14 @@
 
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 <form method="POST" action="{{ route('categories.store') }}">
-
+                    @csrf
                     <div class="card">
                         <div class="card-header">
                             {{ __('Create category') }}
                         </div>
                         <div class="card-body">
                             @include('partials.alert')
-                            @csrf
+                            
                             <div class="form-group row">
                                 <label>Category Name</label>
                                 <input class="form-control" type="text" id="J_name"
@@ -41,7 +41,7 @@
                             <div class="form-group row">
                                 <label>Description</label>
                                 <textarea class="form-control" id="summernote" name="category_description" rows="9"
-                                    required> {{old('category_description')}}</textarea>
+                                    > {{old('category_description')}}</textarea>
                                 <small>The description is not prominent by default; however, some themes may show
                                     it.</small>
                             </div>
@@ -69,7 +69,7 @@
                                     <th>Category Name</th>
                                     <th>Description</th>
                                     <th>Slug</th>
-                                    <th>Count</th>
+                                    <th>Product Count</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -77,11 +77,13 @@
                                 @foreach($categories as $category)
                                 <tr>
                                     <td>{{ $category->category_name }}</td>
-                                    <td>{{ $category->category_description }}</td>
+                                    <td>{!! $category->category_description !!}</td>
                                     <td>{{ $category->slug }}</td>
                                     <td>
-
-                                        {{ count($category->posts) }}
+                                        @if ($category->products)
+                                            {{ count($category->products) }}
+                                        @endif
+                                        
                                     </td>
                                     <td>
                                         <div class="dropdown no-arrow">
@@ -93,9 +95,9 @@
                                             <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                                 aria-labelledby="dropdownMenuLinkRevenue">
                                                 <div class="dropdown-header">Actions:</div>
-                                                <a href="{{ url('/ad/categories/' . $category->id) }}"
+                                                <a href="{{ url('/categories/' . $category->id) }}"
                                                     class="btn dropdown-item">View</a>
-                                                <a href="{{ url('/ad/categories/' . $category->id . '/edit') }}"
+                                                <a href="{{ url('/categories/' . $category->id . '/edit') }}"
                                                     class="btn dropdown-item">Edit</a>
                                                 <div class="dropdown-divider"></div>
                                                 <form action="{{ route('categories.destroy', $category->id ) }}"

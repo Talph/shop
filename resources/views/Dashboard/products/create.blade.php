@@ -1,4 +1,4 @@
-@extends('backend.layouts.dashboard')
+@extends('layouts.dashboard')
 
 @section('content')
 
@@ -27,41 +27,24 @@
                                     <label>Title</label>
                                     <input class="form-control" type="text" id="J_name" placeholder="{{ __('Title') }}"
                                         value="{{old('title')}}" name="title" required autofocus>
-                                    <span class="small mt-1">Slug:</span> <input id="J_slug"
-                                        class="border-0 form-control" placeholder="" />
 
                                 </div>
                                 <div class="form-group row">
-                                    <label>Subtitle</label>
-                                    <input class="form-control" type="text" placeholder="{{ __('Subtitle') }}"
-                                        name="subtitle" value="{{old('subtitle')}}" required autofocus>
-                                </div>
+                                                                
+                                                                        <label>Slug</label>
+                                                                        <input class="form-control" disabled id="J_slug" type="text" name="slug"
+                                                                            required autofocus>
+                                                                   
+                                                                </div>
 
                                 <div class="form-group row">
-                                    <label>Content</label>
+                                    <label>Description</label>
                                     <textarea class="form-control" id="summernote" name="product_body" rows="9" required>
                                     {{old('product_body')}}</textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card mt-4 card-collapsable">
-                        <a class="card-header" href="#collapseCardExcerpt" data-toggle="collapse" role="button"
-                            aria-expanded="true" aria-controls="collapseCardExcerpt">
-                            {{ __('Excerpt') }}
-                        </a>
-                        <div class="collapse show" id="collapseCardExcerpt">
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <textarea class="form-control" id="textarea-excerpt" name="short_description"
-                                        rows="4" placeholder="{{ __('Summary..') }}"
-                                        required>{{old('product_body')}}</textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="card mt-4 card-collapsable">
                         <a class="card-header" href="#collapseCardMeta" data-toggle="collapse" role="button"
                             aria-expanded="true" aria-controls="collapseCardMeta">
@@ -158,16 +141,13 @@
                 <div class="card mt-4 card-collapsable">
                     <a class="card-header" href="#collapseCardImage" data-toggle="collapse" role="button"
                         aria-expanded="true" aria-controls="collapseCardImage">
-                        {{ __('Featured image') }}
+                        {{ __('Product Variants') }}
                     </a>
                     <div class="collapse show" id="collapseCardImage">
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="col">
-                                    {{-- <label>Featured Image</label> --}}
                                     <br />
-
-                                    <input type="file" class="custom-form-input" name="img_name">
 
                                 </div>
                             </div>

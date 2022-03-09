@@ -9,7 +9,7 @@
         <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
             For more information about DataTables, please visit the official DataTables documentation.</p>
         <div class="createProduct my-4">
-            <a class="btn btn-primary" href={{route('posts.create')}}>{{__('Create New Post')}}</a>
+            <a class="btn btn-primary" href={{route('categories.create')}}>{{__('Create New Post')}}</a>
         </div>
         <form method="POST" action="/ad/categories/{{ $category->id }}">
             @csrf
@@ -19,7 +19,7 @@
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="card">
                         <div class="card-header">
-                            {{ __('Edit') }} : {{ $category->title }}
+                            {{ __('Edit') }} : {{ $category->category_name }}
                         </div>
                         <div class="card-body">
 
@@ -33,9 +33,9 @@
 
                             <div class="form-group row">
                                 <div class="col">
-                                    <label>Subtitle</label>
+                                    <label>Slug</label>
                                     <input class="form-control" id="J_slug" type="text"
-                                        placeholder="{{ __('category-slug') }}" name="slug"
+                                        placeholder="{{ __('category->slug') }}" name="slug"
                                         value="{{ $category->slug }}" required autofocus>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                             <div class="form-group row">
                                 <div class="col">
                                     <label>Description</label>
-                                    <textarea class="form-control" id="textarea-input" name="category_description"
+                                    <textarea class="form-control" id="summernote" name="category_description"
                                         rows="9" placeholder="{{ __('Description...') }}" required>
                                     {{ $category->category_description }}</textarea>
                                 </div>
@@ -62,6 +62,17 @@
 
 @endsection
 
-@section('javascript')
-
+@section('scripts')
+<!-- Page level plugin CSS-->
+<link href="{{ asset('vendor/summernote/summernote.min.css')}}" rel="stylesheet">
+<!-- Core plugin JavaScript-->
+<script src="{{ asset('vendor/summernote/summernote.min.js')}}"></script>
+<script>
+    $(document).ready(function() {
+            $('#summernote').summernote({
+                tabsize: 2,
+                height: 200
+            });      
+          });
+</script>
 @endsection

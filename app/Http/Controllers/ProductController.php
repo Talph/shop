@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::all();
+        $categories = Category::all();
         return view('dashboard.products.create', ['categories' => $categories]);
     }
 
@@ -98,11 +99,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Product $Product)
+    public function edit($id)
     {
 
         $product = Product::find($id);
-        $categories = ProductCategory::get();
+        $categories = Category::get();
         return view('dashboard.products.edit', ['categories' => $categories, 'product' => $product]);
     }
 
@@ -113,7 +114,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Product $Product)
+    public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'name'             => 'required|min:1|max:64',

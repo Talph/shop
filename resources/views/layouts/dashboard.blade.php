@@ -14,6 +14,9 @@
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+        <!-- Custom fonts for this template-->
+        <link href="{{ asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+
         <!-- Page level plugin CSS-->
         <link href="{{ asset('vendor/datatables/jquery.dataTables.min.css')}}" rel="stylesheet">
         <link href="{{ asset('css/dash.min.css') }}" rel="stylesheet">
@@ -25,7 +28,7 @@
         <div id="wrapper">
 
             <!-- Side Bar Menu -->
-            @include('backend.partials.sidebarMenu')
+            @include('partials.sidebarMenu')
 
 
             <!-- Content Wrapper -->
@@ -33,11 +36,11 @@
 
                 <!-- Main Content -->
                 <div id="content">
-                    @include('backend.partials.topbarMenu')
+                    @include('partials.topbarMenu')
                     @yield('content')
                 </div>
 
-                @include('backend.partials.footer')
+                {{-- @include('partials.footer') --}}
             </div>
         </div>
     </div>
