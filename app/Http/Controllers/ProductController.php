@@ -51,26 +51,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'             => 'required|min:1|max:64',
-            'subname'          => 'required',
-            'product_body'           => 'required',
-            'short_description' => 'required',
+            'name' => 'required|min:1|max:64',
+            'slug' => 'required',
+            'meta_title' => 'required',
         ]);
 
         $product = new Product();
         $product->name = $request->input('name');
-        $product->meta_desc = $request->input('meta_desc');
-        $product->seo_keywords = $request->input('seo_keywords');
-        $product->short_description = $request->input('short_description');
-        $product->product_body = $request->input('product_body');
-        $product->seo_name = $request->input('seo_name');
+        $product->meta_description = $request->input('meta_desc');
+        $product->meta_title = $request->input('meta_title');
+        $product->slug = $request->input('slug');
+        $product->meta_keywords = $request->input('meta_keywords');
         $product->is_published = $request->input('is_published');
-        if (!$request->input('producted_at')) {
-            $product->producted_at = Carbon::now()->toDateTimeString();
-        } else {
-            $product->producted_at = $request->input('producted_at');
-        }
         $product->save();
+
         $category = $request->input('category_id');
         if ($category) {
             foreach ($category as $cat) {
@@ -116,18 +110,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'name'             => 'required|min:1|max:64',
-            'product_body'           => 'required',
-            'short_description' => 'required',
+        $request->validate([
+            'name' => 'required|min:1|max:64',
+            'slug' => 'required',
+            'meta_title' => 'required',
         ]);
 
         $product = Product::find($id);
-        $product->name     = $request->input('name');
-        $product->meta_desc     = $request->input('meta_desc');
-        $product->short_description     = $request->input('short_description');
-        $product->product_body   = $request->input('product_body');
-        $product->seo_name = $request->input('seo_name');
+        $product->name = $request->input('name');
+        $product->meta_description     = $request->input('meta_desc');
+        $product->meta_title     = $request->input('meta_title');
+        $product->slug   = $request->input('slug');
+        $product->meta_keywords = $request->input('meta_keywords');
         $product->is_published = $request->input('is_published');
         $product->save();
 
