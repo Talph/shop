@@ -18,8 +18,8 @@ class Product extends Model
         return $this->belongsToMany(Category::class, 'products_categories');
     }
 
-    public function variants()
-    {
-        return $this->belongsToMany(Category::class, 'products_variants');
-    }
+    // public function variations()
+    // {
+    //     return $this->belongsTo(Variant::class, 'product_variants');
+    // }
 }

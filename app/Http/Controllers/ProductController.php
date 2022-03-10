@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Variant;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -58,7 +59,7 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->name = $request->input('name');
-        $product->meta_description = $request->input('meta_desc');
+        $product->meta_description = $request->input('meta_description');
         $product->meta_title = $request->input('meta_title');
         $product->slug = $request->input('slug');
         $product->meta_keywords = $request->input('meta_keywords');
@@ -83,8 +84,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::with('user')->find($id);
-        return view('dashboard.products.show', ['product' => $product]);
+        $product = Product::find($id);
+        $variants = Variant::where('product_id', $id)->get(['description', 'id']);
+        return view('dashboard.products.show', ['product' => $product, 'variants' => $variants]);
     }
 
     /**
@@ -95,7 +97,6 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-
         $product = Product::find($id);
         $categories = Category::get();
         return view('dashboard.products.edit', ['categories' => $categories, 'product' => $product]);
@@ -118,7 +119,7 @@ class ProductController extends Controller
 
         $product = Product::find($id);
         $product->name = $request->input('name');
-        $product->meta_description     = $request->input('meta_desc');
+        $product->meta_description     = $request->input('meta_description');
         $product->meta_title     = $request->input('meta_title');
         $product->slug   = $request->input('slug');
         $product->meta_keywords = $request->input('meta_keywords');

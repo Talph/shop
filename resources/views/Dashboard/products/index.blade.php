@@ -36,10 +36,9 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Description</th>
-                                <th>Date</th>
                                 <th>Status</th>
                                 <th>Slug</th>
-                                <th></th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,7 +46,6 @@
                             <tr class="odd">
                                 <td>{{ $product->name }}</td>
                                 <td>{{ \Illuminate\Support\Str::limit($product->meta_description, 160) }}</td>
-                                <td>{{ $product->posted_at }}</td>
                                 <td>
 
                                     @if($product->is_published == 0)
@@ -55,12 +53,12 @@
                                         Draft
                                     </span>
                                     @elseif($product->is_published == 1)
-                                    <span class="draft">
-                                        Published
+                                    <span class="published">
+                                        Enabled
                                     </span>
                                     @else
-                                    <span class="draft">
-                                        Awaiting approval
+                                    <span class="published">
+                                        Awaiting published
                                     </span>
                                     @endif
 
@@ -83,7 +81,7 @@
                                             <a href="{{ url('/products/' . $product->id . '/edit') }}"
                                                 class="btn dropdown-item">Edit</a>
                                           
-
+<a href="{{ url('/product/' . $product->id . '/variants') }}" class="btn dropdown-item">Manage variants</a>
                                             
                                             <div class="dropdown-divider"></div>
                                             <form action="{{ route('products.destroy', $product->id ) }}" method="POST">
@@ -103,10 +101,9 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Description</th>
-                                <th>Date</th>
                                 <th>Status</th>
                                 <th>Slug</th>
-                                <th></th>
+                                <th>Actions</th>
                             </tr>
                         </tfoot>
                     </table>

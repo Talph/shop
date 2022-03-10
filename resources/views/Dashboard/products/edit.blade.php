@@ -8,10 +8,22 @@
         <h1 class="h3 mb-2 text-gray-800">Written products </h1>
         <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
             For more information about DataTables, please visit the official DataTables documentation.</p>
+            <div class="row">
+                <div class="col-md-6">
         <div class="createProduct my-4">
             <a class="btn btn-primary" href={{route('products.create')}}>{{__('Create New product')}}</a>
         </div>
-        <form method="POST" enctype="multipart/form-data" action="/ad/products/{{ $product->id }}">
+                </div>
+                                        <div class="col-md-6">
+                                        <form action="{{ route('products.destroy', $product->id ) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn mt-2 btn-danger float-right">Delete</button>
+                                        </form>
+                                        </div>
+            </div>
+
+        <form method="POST" enctype="multipart/form-data" action="/products/{{ $product->id }}">
             @csrf
             @method('PUT')
 
@@ -52,7 +64,7 @@
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label>Meta description</label>
-                                    <textarea class="form-control" id="textarea-meta_desc" name="meta_desc" rows="4"
+                                    <textarea class="form-control" id="textarea-meta_desc" name="meta_description" rows="4"
                                         placeholder="{{ __('description..') }}" required>{{$product->meta_description}}</textarea>
                                     <small>A maximum of 160 characters are recommended</small>
                                 </div>
@@ -67,6 +79,10 @@
                         </a>
                         <div class="collapse show" id="collapseCardKeyword">
                             <div class="card-body">
+                                <div class="form-group row">
+                                                                    <input class="form-control" name="meta_title" type="text" placeholder="{{ __('Meta title..') }}"
+                                                                        value="{{$product->meta_title}}" required>
+                                                                </div>
                                 <div class="form-group row">
                                     <label>Target keywords</label>
                                     <input type="text" class="form-control" name="meta_keywords" rows="4"
@@ -97,8 +113,7 @@
                                 </div>
 
                                 <button class="btn btn-block btn-success" type="submit">{{ __('Save') }}</button>
-                                <a href="{{ route('products.index') }}"
-                                    class="btn btn-block btn-primary">{{ __('Return') }}</a>
+                            
                             </div>
                         </div>
                     </div>
@@ -112,9 +127,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <div class="col">
-                                        <label>Category</label>
-                                        <br />
-
+                                        @if (count($categories) > 0)
                                         @foreach($categories as $category)
                                         <input data-role-id="{{$category->id}}" data-role-slug="{{$category->slug}}"
                                             value="{{$category->id}}" @foreach ($product->categories as $cat)
@@ -123,6 +136,10 @@
                                         <label>{{ $category->category_name }}</label>
                                         <br />
                                         @endforeach
+                                        @else
+                                             <label for="category">No categories</label><br />
+                                             @endif
+                                            <a href="btn" data-toggle="modal" data-target="#createModal">Create category</a>
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +156,7 @@
                             <div class="form-group">
                                 <div class="col">
                                     <br />
-                
+                <a href="/product/{{$product->id}}/variants/" class="btn btn-secondary">Manage variants</a>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +167,7 @@
         </form>
     </div>
 </div>
-
+@include('partials.category-modal')
 @endsection
 
 @section('scripts')

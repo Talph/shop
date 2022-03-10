@@ -59,8 +59,7 @@ class CategoryController extends Controller
         $category->category_name     = $request->input('category_name');
         $category->category_description     = $request->input('category_description');
         $category->save();
-        $request->session()->flash('message', 'Successfully created category');
-        return redirect()->route('categories.index');
+        return redirect()->back()->with('message', 'Successfully created category');
     }
 
     /**

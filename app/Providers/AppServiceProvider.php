@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         // registering a callback to be executed upon the creation of a Product
         Product::creating(function ($product) {
             // create a slug based on the activity title
-            $slug = Str::slug($product->title);
+            $slug = Str::slug($product->slug);
             // check if slug exist and count them
             $count = Product::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->withTrashed()->count();
             // if other slugs exist that are the same, append the count to the slug
@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Product::updating(function ($product) {
-            if (!$product->id) {
+            if ($product->id) {
                 // create a slug based on the activity title
                 $slug = Str::slug($product->slug);
                 // check if slug exist and count them

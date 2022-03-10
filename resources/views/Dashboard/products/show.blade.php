@@ -1,4 +1,4 @@
-@extends('backend.layouts.dashboard')
+@extends('layouts.dashboard')
 
 @section('content')
 
@@ -15,25 +15,24 @@
             <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                 <div class="card">
                     <div class="card-header">
-                        product: {{ $product->title }}</div>
+                        product: {{ $product->name }}</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('logout') }}"> @csrf<button
-                                class="btn btn-primary">{{ __('Logout') }}</button></form>
-                        <br>
-                        <h4>Author:</h4>
-                        <p> {{ $product->user->name }}</p>
-                        <h4>Title:</h4>
-                        <p> {{ $product->title }}</p>
+                        <h4>Product name:</h4>
+                        <p> {{ $product->name }}</p>
                         <h4>Content:</h4>
-                        <p>{{ $product->short_description }}</p>
-                        <h4>Date published:</h4>
-                        <p>{{ $product->posted_at }}</p>
-                        <h4> Status: </h4>
-                        <p>
-                            <span class="status">
-                            </span>
-                        </p>
-                        <h4>Note type:</h4>
+                        <p>{{ $product->meta_description }}</p>
+
+                        @if(count($variants) > 0)
+                    
+                        Product Variants*:
+                        <br/>
+                        @foreach ($variants as $variant)
+                        <div class="col-md-12">    
+                        <input type="radio" name="variant" id="{{$variant->id}}"> <label for="{{$variant->id}}">{{$variant->description}}</label>
+                        </div>
+                        @endforeach
+                        @endif
+
                         <a href="{{ route('products.index') }}" class="btn btn-block btn-primary">{{ __('Return') }}</a>
                     </div>
                 </div>

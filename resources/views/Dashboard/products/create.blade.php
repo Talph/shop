@@ -5,7 +5,7 @@
 <div class="container">
     <div class="animated fadeIn">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Written products </h1>
+        <h1 class="h3 mb-2 text-gray-800">Create Product </h1>
         <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
             For more information about DataTables, please visit the official DataTables documentation.</p>
         <div class="createProduct my-4">
@@ -24,24 +24,17 @@
                                 @include('partials.alert')
                                 @csrf
                                 <div class="form-group row">
-                                    <label>Title</label>
-                                    <input class="form-control" type="text" id="J_name" placeholder="{{ __('Title') }}"
-                                        value="{{old('title')}}" name="title" required autofocus>
-
+                                    <label>Name</label>
+                                    <input class="form-control" type="text" id="J_name" placeholder="{{ __('Name') }}"
+                                        value="{{old('name')}}" name="name" required autofocus>
                                 </div>
                                 <div class="form-group row">
-                                                                
-                                                                        <label>Slug</label>
-                                                                        <input class="form-control" disabled id="J_slug" type="text" name="slug"
-                                                                            required autofocus>
-                                                                   
-                                                                </div>
+                                    <label>Slug</label>
+                                    <input class="form-control" id="J_slug" type="text" name="slug" value="{{old('slug')}}" required
+                                        autofocus>
 
-                                <div class="form-group row">
-                                    <label>Description</label>
-                                    <textarea class="form-control" id="summernote" name="product_body" rows="9" required>
-                                    {{old('product_body')}}</textarea>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -52,11 +45,18 @@
                         </a>
                         <div class="collapse show" id="collapseCardMeta">
 
+
+
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <textarea class="form-control" id="textarea-meta_desc" name="meta_desc" rows="4"
-                                        placeholder="{{ __('Meta description..') }}"
-                                        required>{{old('meta_desc')}}</textarea>
+                                    <input class="form-control" name="meta_title" type="text"
+                                        placeholder="{{ __('Meta title..') }}" value="{{old('meta_title')}}" required>
+                                </div>
+
+                                <div class="form-group row">
+                                    <textarea class="form-control" id="textarea-meta_desc" name="meta_description"
+                                        rows="4" placeholder="{{ __('Meta description..') }}"
+                                        required>{{old('meta_description')}}</textarea>
                                     <small>A maximum of 160 characters are recommended</small>
                                 </div>
                             </div>
@@ -71,10 +71,11 @@
                         <div class="collapse show" id="collapseCardKeyword">
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <input type="text" class="form-control" name="seo_keywords" rows="4"
+                                    <input type="text" class="form-control" name="meta_keywords" rows="4"
                                         placeholder="{{ __('Target keywords...') }}" required
-                                        value="{{old('seo_keywords')}}" />
-                                    <small>Separate keywords with a comma eg 'Best shop, Shoes'</small>
+                                        value="{{old('meta_keywords')}}" />
+                                    <small>Separate keywords with a comma eg 'Best online store foe pet food,
+                                        Cats'</small>
                                 </div>
                             </div>
                         </div>
@@ -94,12 +95,7 @@
                                     <label>product status</label>
                                     <select class="form-control" name="is_published">
                                         <option selected value="0">Draft</option>
-                                        @canany(['isAdmin', 'isManager'])
                                         <option value="1">Publish</option>
-                                        @endcanany
-                                        @can('isUser')
-                                        <option value="2">Send for approval </option>
-                                        @endcan
 
                                     </select>
                                 </div>
@@ -113,86 +109,57 @@
                             </div>
                         </div>
                     </div>
-                <div class="card mt-4 card-collapsable">
-                    <a class="card-header" href="#collapseCardCategory" data-toggle="collapse" role="button"
-                        aria-expanded="true" aria-controls="collapseCardCategory">
-                        {{ __('Category') }}
-                    </a>
-                    <div class="collapse show" id="collapseCardCategory">
-                        <div class="card-body">
-                            @if (count($categories) >= 1)
-                            <div class="form-group">
-                                <label for="category">Category</label>
-                                <br />
-                                @foreach($categories as $category)
-                                <input type="checkbox" name="category_id[]" value="{{ $category->id }}">
-                                <label>{{ $category->category_name }}</label><br />
-                                @endforeach
+                    <div class="card mt-4 card-collapsable">
+                        <a class="card-header" href="#collapseCardCategory" data-toggle="collapse" role="button"
+                            aria-expanded="true" aria-controls="collapseCardCategory">
+                            {{ __('Category') }}
+                        </a>
+                        <div class="collapse show" id="collapseCardCategory">
+                            <div class="card-body">
+                                @if (count($categories) > 0)
+                                <div class="form-group">
+                                    <label for="category">Category</label>
+                                    <br />
+                                    @foreach($categories as $category)
+                                    <input type="checkbox" name="category_id[]" value="{{ $category->id }}">
+                                    <label>{{ $category->category_name }}</label><br />
+                                    @endforeach
+                                </div>
+                                @else
+                                <label for="category">No categories</label><br />
+                                @endif
+                                <div class="form-group">
+                                                                    <a href="btn" data-toggle="modal" data-target="#createModal">Create category</a>
+                                                                </div>
                             </div>
-                            @else
-                            <label for="category">No categories</label><br />
-                            <a href="btn" data-toggle="modal" data-target="#createModal">Create category</a>
-                            @endif
                         </div>
                     </div>
-                </div>
 
 
-                <div class="card mt-4 card-collapsable">
-                    <a class="card-header" href="#collapseCardImage" data-toggle="collapse" role="button"
-                        aria-expanded="true" aria-controls="collapseCardImage">
-                        {{ __('Product Variants') }}
-                    </a>
-                    <div class="collapse show" id="collapseCardImage">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <div class="col">
-                                    <br />
+                    <div class="card mt-4 card-collapsable">
+                        <a class="card-header" href="#collapseCardImage" data-toggle="collapse" role="button"
+                            aria-expanded="true" aria-controls="collapseCardImage">
+                            {{ __('Product Variants') }}
+                        </a>
+                        <div class="collapse show" id="collapseCardImage">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <div class="col">
+                                        <br />
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
         </form>
     </div>
 </div>
 </div>
 
-<!-- Create Category Modal-->
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{{route('categories.store')}}">
-                    @method('POST')
-                    @csrf
-
-                    <label>Category Name</label>
-                    <input class="form-control" type="text" id="J_name" placeholder="{{ __('Category Name') }}"
-                        value="{{old('title')}}" name="category_name" required autofocus>
-                    <small>The name is how it appears on your site.</small>
-                    <br />
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" onclick="$(this).closest('form').submit();">Create</a>
-                </form>
-            </div>
-            <div class="modal-footer">
-
-
-            </div>
-        </div>
-    </div>
-</div>
+@include('partials.category-modal')
 
 @endsection
 
