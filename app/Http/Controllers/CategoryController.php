@@ -105,8 +105,7 @@ class CategoryController extends Controller
         $category->category_description = $request->input('category_description');
         $category->slug = $slug;
         $category->save();
-        $request->session()->flash('message', 'Successfully edited category');
-        return redirect()->route('categories.index');
+        return redirect()->back()->with('message', 'Successfully edited category');
     }
 
     /**

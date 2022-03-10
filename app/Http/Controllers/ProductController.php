@@ -72,8 +72,8 @@ class ProductController extends Controller
                 $product->categories()->attach($cat);
             }
         }
-        $request->session()->flash('message', 'Successfully created product');
-        return redirect()->route('products.index');
+        return redirect()->back()->with('message', 'Successfully edited product');
+
     }
 
     /**
@@ -133,8 +133,7 @@ class ProductController extends Controller
                 $product->categories()->attach($cat);
             }
         }
-        $request->session()->flash('message', 'Successfully edited note');
-        return redirect()->route('products.index');
+        return redirect()->back()->with('message', 'Successfully edited product');
     }
 
     /**

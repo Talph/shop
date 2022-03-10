@@ -8,9 +8,9 @@
 </div>
 @endif
 
-@if(Session::has('message'))
-<div class="alert alert-success">{{Session::get('message')}}</div>
+@if(session('message'))
+<div class="alert alert-success">{{session('message')}}</div>
 @endif
-@if(Session::has('err_message'))
-<div class="alert alert-danger">{{Session::get('err_message')}}</div>
+@if(session('err_message'))
+<div class="alert alert-danger">{{session('err_message')}}</div>
 @endif
