@@ -1,5 +1,5 @@
 # Basic Shop functionality
-This was done as a Job interview coding test.
+This was done as a Job interview challenge.
 
 # Features
 
@@ -9,7 +9,7 @@ Product variants
 
 # Requirements
 
-Linux/Unix, WAMP/XAMP or MacOS environment
+Linux/Unix, WAMP/XAMP/Laragon or MacOS environment
 PHP >= 8.0
 MySQL >= 5.7.8, MariaDB >= 10.2.2
 Web server (Apache, Nginx or integrated PHP web server for testing)
@@ -24,6 +24,16 @@ To install this application, composer >= 2.1 is required. On the CLI, execute th
 Create env file. In the .env file add your database credentials then generate an app_key
 
 <pre>cp .env.example .env</pre>
+
+Add database name/username/password inside your .env
+<code>
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+</code>
 
 Generate APP_KEY 
 
