@@ -17,15 +17,27 @@ If required PHP extensions are missing, composer will tell you about the missing
 
 # Installation
 
+*Make sure your CLI/bash/terminal is in the project folder*
+*Use vs code, however you can use any code editor you like*
+
 To install this application, composer >= 2.1 is required. On the CLI, execute this command for a complete installation including a working setup:
 
 <pre>Composer install</pre>
+
+You will also need to install NPM dependencies for the frontend (make sure you have node installed on your localhost)
+
+<pre>npm install && npm run dev</pre>
 
 Create env file. In the .env file add your database credentials then generate an app_key
 
 <pre>cp .env.example .env</pre>
 
-Add database name/username/password inside your .env<br/>
+Generate APP_KEY 
+
+<pre>php artisan key:generate</pre>
+
+Add database name/username/password inside your .env
+
 <code>
 DB_CONNECTION=mysql<br/>
 DB_HOST=127.0.0.1<br/>
@@ -34,14 +46,6 @@ DB_DATABASE=laravel<br/>
 DB_USERNAME=root<br/>
 DB_PASSWORD=<br/>
 </code>
-
-Generate APP_KEY 
-
-<pre>php artisan key:generate</pre>
-
-You will also need to install NPM dependencies for the frontend
-
-<pre>npm install</pre>
 
 Run migration to add tables into the database and seed entries into the database using the following command in your CLI
 
