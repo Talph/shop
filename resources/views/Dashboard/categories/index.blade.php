@@ -48,7 +48,7 @@
                             <div class="form-group row">
                                 <label>Description</label>
                                 <textarea class="form-control @error('category_description') is-invalid @enderror"
-                                    name="category_description" rows="4"> {{old('category_description')}}</textarea>
+                                    name="category_description" rows="4">{{old('category_description')}}</textarea>
                                 <small>The description is not prominent by default; however, some themes may show
                                     it.</small>
                                 @error('category_description')

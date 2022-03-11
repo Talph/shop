@@ -20,7 +20,6 @@
                         </div>
                         <div class="card-body">
                             @include('partials.alert')
-
                             <div class="form-group row">
                                 <label>Variant Name</label>
                                 <input class="form-control @error('name') is-invalid @enderror" type="text" id="J_name"
@@ -49,8 +48,7 @@
                             <div class="form-group row">
                                 <label>Description</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror"
-                                    name="description" rows="4">
-                                {{old('description')}}</textarea>
+                                    name="description" rows="4">{{old('description')}}</textarea>
                                 <small>Write product variant description e.g. 5kg, Case of 24 etc</small>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">

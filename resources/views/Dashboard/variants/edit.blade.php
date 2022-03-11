@@ -23,7 +23,7 @@
                             {{ __('Edit') }} : {{ $variant->name }}
                         </div>
                         <div class="card-body">
-
+                            @include('partials.alert')  
                             <div class="form-group row">
                                 <div class="col">
                                     <label>Variant Name</label>
@@ -55,8 +55,7 @@
                                 <div class="col">
                                     <label>Description (5kg/Case of 24)</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror"
-                                        name="description" rows="4" placeholder="{{ __('Description...') }}" required>
-                                    {{ $variant->description }}</textarea>
+                                        name="description" rows="4" placeholder="{{ __('Description...') }}" required>{{ $variant->description }}</textarea>
                                     @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

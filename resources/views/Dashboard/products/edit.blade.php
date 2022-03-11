@@ -34,7 +34,7 @@
                         </a>
                         <div class="collapse show" id="collapseCardExample">
                             <div class="card-body">
-
+                                @include('partials.alert')
                                 <div class="form-group row">
                                     <div class="col">
                                         <label>Name</label>

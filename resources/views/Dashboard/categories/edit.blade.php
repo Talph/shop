@@ -29,7 +29,7 @@
                             {{ __('Edit') }} : {{ $category->category_name }}
                         </div>
                         <div class="card-body">
-
+                            @include('partials.alert')
                             <div class="form-group row">
                                 <div class="col">
                                     <label>Category Name</label>
@@ -63,8 +63,7 @@
                                     <label>Description</label>
                                     <textarea class="form-control @error('category_description') is-invalid @enderror"
                                         name="category_description" rows="4" placeholder="{{ __('Description...') }}"
-                                        required>
-                                    {{ $category->category_description }}</textarea>
+                                        required>{{ $category->category_description }}</textarea>
                                     @error('category_description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

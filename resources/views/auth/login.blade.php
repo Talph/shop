@@ -79,7 +79,14 @@
 
                                 </div>
 
-
+                                <div class="text-center">
+                                    @if (Route::has('register'))
+                                    <a class="small" href="{{ route('register') }}">
+                                        {{ __('Register?') }}
+                                    </a>
+                                    @endif
+                                
+                                </div>
 
                             </div>
                         </div>
