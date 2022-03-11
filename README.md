@@ -17,10 +17,10 @@ If required PHP extensions are missing, composer will tell you about the missing
 
 # Installation
 
+**Follow git instructions on how to clone a respository or you can just download the project as a zip folder extract the zip folder into you host server root**
+
 *Make sure your CLI/bash/terminal is in the project folder*<br/>
 *Use vs code, however you can use any code editor you like*
-
-**Follow git instructions on how to clone a respository or you can just download the project as a zip**
 
 To install this application, composer >= 2.1 is required. On the CLI, execute this command for a complete installation including a working setup:
 
@@ -40,14 +40,14 @@ Generate APP_KEY
 
 Add database name/username/password inside your .env
 
-<code>
+<pre>
 DB_CONNECTION=mysql<br/>
 DB_HOST=127.0.0.1<br/>
 DB_PORT=3306<br/>
 DB_DATABASE=laravel<br/>
 DB_USERNAME=root<br/>
 DB_PASSWORD=<br/>
-</code>
+</pre>
 
 Run migration to add tables into the database and seed entries into the database using the following command in your CLI
 
