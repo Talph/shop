@@ -95,6 +95,6 @@ class VariantController extends Controller
         if ($variant) {
             $variant->delete();
         }
-        return redirect()->back()->with('message', 'variant deleted');
+        return redirect()->back()->with('err_message', 'Variant deleted');
     }
 }

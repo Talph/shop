@@ -23,14 +23,23 @@
                                 @csrf
                                 <div class="form-group row">
                                     <label>Name</label>
-                                    <input class="form-control" type="text" id="J_name" placeholder="{{ __('Name') }}"
+                                    <input class="form-control @error('name') is-invalid @enderror" type="text" id="J_name" placeholder="{{ __('Name') }}"
                                         value="{{old('name')}}" name="name" required autofocus>
+                                        @error('name')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                        @enderror
                                 </div>
                                 <div class="form-group row">
                                     <label>Slug</label>
-                                    <input class="form-control" id="J_slug" type="text" name="slug" value="{{old('slug')}}" required
+                                    <input class="form-control @error('slug') is-invalid @enderror" id="J_slug" type="text" name="slug" value="{{old('slug')}}" required
                                         autofocus>
-
+@error('slug')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                                 </div>
 
                             </div>
@@ -42,20 +51,28 @@
                             {{ __('Meta description') }}
                         </a>
                         <div class="collapse show" id="collapseCardMeta">
-
-
-
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <input class="form-control" name="meta_title" type="text"
+                                    <input class="form-control @error('meta_title') is-invalid @enderror" name="meta_title" type="text"
                                         placeholder="{{ __('Meta title..') }}" value="{{old('meta_title')}}" required>
+                                        @error('meta_title')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                        @enderror
                                 </div>
 
                                 <div class="form-group row">
-                                    <textarea class="form-control" id="textarea-meta_desc" name="meta_description"
+                                    <textarea class="form-control @error('meta_description') is-invalid @enderror" id="textarea-meta_desc" name="meta_description"
                                         rows="4" placeholder="{{ __('Meta description..') }}"
                                         required>{{old('meta_description')}}</textarea>
+
                                     <small>A maximum of 160 characters are recommended</small>
+                                    @error('meta_description')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                            @enderror
                                 </div>
                             </div>
                         </div>
@@ -69,11 +86,16 @@
                         <div class="collapse show" id="collapseCardKeyword">
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <input type="text" class="form-control" name="meta_keywords" rows="4"
+                                    <input type="text" class="form-control @error('meta_keywords') is-invalid @enderror" name="meta_keywords" rows="4"
                                         placeholder="{{ __('Target keywords...') }}" required
                                         value="{{old('meta_keywords')}}" />
                                     <small>Separate keywords with a comma eg 'Best online store foe pet food,
                                         Cats'</small>
+                                        @error('meta_keywords')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                                @enderror
                                 </div>
                             </div>
                         </div>

@@ -17,16 +17,14 @@
                 alt="" width="200">
         </div>
     </div>
-
-
-
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="card">
                 <div class="card-header">
-                    {{ __('products') }}
+                    {{ __('Products') }}
                 </div>
                 <div class="card-body">
+                    @include('partials.alert')
                     <table id="dataTable" class="table table-striped table-bordered" style="width: 100%;">
                         <thead>
                             <tr>

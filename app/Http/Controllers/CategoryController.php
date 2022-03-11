@@ -132,6 +132,6 @@ class CategoryController extends Controller
         if ($category) {
             $category->delete();
         }
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('err_message', 'Successfully deleted category');;
     }
 }

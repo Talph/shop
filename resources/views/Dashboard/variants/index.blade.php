@@ -5,12 +5,13 @@
 <div class="container">
     <div class="animated fadeIn">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Variants for product: {{$product->name}}</h1></h1>
-                    <a class="btn btn-secondary float-right" href="/products/{{$product->id}}">{{__('Back to product')}}</a>
+        <h1 class="h3 mb-2 text-gray-800">Variants for product: {{$product->name}}</h1>
+        </h1>
+        <a class="btn btn-secondary float-right" href="/products/{{$product->id}}">{{__('Back to product')}}</a>
         <div class="row">
 
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                
+
                 <form method="POST" action="/product/{{$product->id}}/variants">
                     @csrf
                     <div class="card">
@@ -22,23 +23,40 @@
 
                             <div class="form-group row">
                                 <label>Variant Name</label>
-                                <input class="form-control" type="text" id="J_name"
-                                    placeholder="{{ __('Name') }}" value="{{old('name')}}"
-                                    name="name" required autofocus>
+                                <input class="form-control @error('name') is-invalid @enderror" type="text" id="J_name"
+                                    placeholder="{{ __('Name') }}" value="{{old('name')}}" name="name" required
+                                    autofocus>
                                 <small>The name is how it appears on your site.</small>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
-    
+
                             <div class="form-group row">
-                                                        <label>Value</label>
-                                                        <input class="form-control" type="text" id="J_name" placeholder="{{ __('R59') }}" value="{{old('value')}}"
-                                                            name="value" required autofocus>
-                                                    </div>
+                                <label>Value</label>
+                                <input class="form-control @error('value') is-invalid @enderror" type="text" id="J_name"
+                                    placeholder="{{ __('R59') }}" value="{{old('value')}}" name="value" required
+                                    autofocus>
+                                @error('value')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
 
                             <div class="form-group row">
                                 <label>Description</label>
-                                <textarea class="form-control"  name="description" rows="4">
+                                <textarea class="form-control @error('description') is-invalid @enderror"
+                                    name="description" rows="4">
                                 {{old('description')}}</textarea>
                                 <small>Write product variant description e.g. 5kg, Case of 24 etc</small>
+                                @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
 
                             <button class="btn btn-block btn-success" type="submit">{{ __('Save variant') }}</button>
@@ -67,7 +85,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                                               
+
                                 @foreach($variants as $variant)
                                 <tr>
                                     <td>{{ $variant->name }}</td>
@@ -87,8 +105,7 @@
                                                 <a href="{{ url('/product/'.$product->id. '/variants/' . $variant->id . '/edit') }}"
                                                     class="btn dropdown-item">Edit</a>
                                                 <div class="dropdown-divider"></div>
-                                                <form action="/variants/{{$variant->id}}/delete"
-                                                    method="POST">
+                                                <form action="/variants/{{$variant->id}}/delete" method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button class="btn dropdown-item text-danger">Delete</button>

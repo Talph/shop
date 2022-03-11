@@ -20,27 +20,42 @@
                             
                             <div class="form-group row">
                                 <label>Category Name</label>
-                                <input class="form-control" type="text" id="J_name"
-                                    placeholder="{{ __('Category Name') }}" value="{{old('title')}}"
+                                <input class="form-control @error('category_name') is-invalid @enderror" type="text" id="J_name"
+                                    placeholder="{{ __('Category Name') }}" value="{{old('category_name')}}"
                                     name="category_name" required autofocus>
                                 <small>The name is how it appears on your site.</small>
+                                @error('category_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                             </div>
                             <div class="form-group row">
                                 <label>Slug</label>
-                                <input class="form-control" id="J_slug" type="text"
+                                <input class="form-control @error('slug') is-invalid @enderror" id="J_slug" type="text"
                                     placeholder="{{ __('category-name') }}" disabled name="slug" value="{{old('slug')}}"
                                     required autofocus>
                                 <small>The “slug” is the URL-friendly version of the name. It is usually all lowercase
                                     and contains only
                                     letters, numbers, and hyphens.</small>
+                                    @error('slug')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
                             </div>
 
                             <div class="form-group row">
                                 <label>Description</label>
-                                <textarea class="form-control" name="category_description" rows="4"
+                                <textarea class="form-control @error('category_description') is-invalid @enderror" name="category_description" rows="4"
                                     > {{old('category_description')}}</textarea>
                                 <small>The description is not prominent by default; however, some themes may show
                                     it.</small>
+                                    @error('category_description')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                        @enderror
                             </div>
 
                             <button class="btn btn-block btn-success" type="submit">{{ __('Save Category') }}</button>

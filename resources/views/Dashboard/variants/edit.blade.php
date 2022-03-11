@@ -27,26 +27,41 @@
                             <div class="form-group row">
                                 <div class="col">
                                     <label>variant Name</label>
-                                    <input class="form-control" id="V_name" type="text"
+                                    <input class="form-control @error('name') is-invalid @enderror" id="V_name" type="text"
                                         name="name" value="{{$variant->name}}" required autofocus>
+                                        @error('name')
+                                                                                                    <span class="invalid-feedback" role="alert">
+                                                                                                        <strong>{{ $message }}</strong>
+                                                                                                    </span>
+                                                                                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col">
                                     <label>value</label>
-                                    <input class="form-control" type="text"
+                                    <input class="form-control @error('value') is-invalid @enderror" type="text"
                                         placeholder="{{ __('$variant->value') }}" name="value"
                                         value="{{ $variant->value }}" required autofocus>
+                                        @error('value')
+                                                                                                    <span class="invalid-feedback" role="alert">
+                                                                                                        <strong>{{ $message }}</strong>
+                                                                                                    </span>
+                                                                                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col">
                                     <label>Description (5kg/Case of 24)</label>
-                                    <textarea class="form-control" name="description" rows="4"
+                                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="4"
                                         placeholder="{{ __('Description...') }}" required>
                                     {{ $variant->description }}</textarea>
+                                    @error('description')
+                                                                                                <span class="invalid-feedback" role="alert">
+                                                                                                    <strong>{{ $message }}</strong>
+                                                                                                </span>
+                                                                                                @enderror
                                 </div>
                             </div>
 
