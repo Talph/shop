@@ -20,6 +20,8 @@ If required PHP extensions are missing, composer will tell you about the missing
 *Make sure your CLI/bash/terminal is in the project folder*<br/>
 *Use vs code, however you can use any code editor you like*
 
+**Follow git instructions on how to clone a respository or you can just download the project as a zip**
+
 To install this application, composer >= 2.1 is required. On the CLI, execute this command for a complete installation including a working setup:
 
 <pre>Composer install</pre>
