@@ -5,13 +5,13 @@
     <div class="container">
         <h1 class="my-2">{{$product->name}}</h1>
 
-            <div class="breadcrumb">
-                <a class="link" href="{{url('/')}}">
-                    Shop
-                </a>
-                &nbsp; / {{$product->name}}
-            </div>
+        <div class="breadcrumb">
+            <a class="link" href="{{url('/')}}">
+                Shop
+            </a>
+            &nbsp; / {{$product->name}}
         </div>
+    </div>
     <div class="container">
         <div class="row">
             @if(!$product)
@@ -46,7 +46,7 @@
                     @endforeach
                 </p>
                 @endif
-                        <button disabled class="btn btn-success">Buy</button>
+                <button disabled class="btn btn-success">Buy</button>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 <h3>Categories</h3>

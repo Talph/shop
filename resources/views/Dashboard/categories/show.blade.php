@@ -31,7 +31,6 @@
 
 @endsection
 
-
-@section('javascript')
+@section('scripts')
 
 @endsection

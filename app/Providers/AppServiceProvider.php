@@ -63,7 +63,7 @@ class AppServiceProvider extends ServiceProvider
 
         Category::updating(function ($category) {
             if (!$category->id) {
-                // create a slug based on the activity title
+                // create a slug based on the activity name
                 $slug = Str::slug($category->slug);
                 // check if slug exist and count them
                 $count = Category::whereRaw("slug RLIKE '^{$slug}(-[0-9]+)?$'")->withTrashed()->count();

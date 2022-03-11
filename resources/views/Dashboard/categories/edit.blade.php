@@ -6,18 +6,18 @@
     <div class="animated fadeIn">
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Edit category: {{$category->category_name}} </h1>
-<div class="row my-2">
-    <div class="col-md-5">
-            <a class="btn btn-primary" href={{route('categories.index')}}>{{__('Create new category')}}</a>
-    </div>
+        <div class="row my-2">
+            <div class="col-md-5">
+                <a class="btn btn-primary" href={{route('categories.index')}}>{{__('Create new category')}}</a>
+            </div>
             <div class="col-md-4">
-                                                        <form action="{{ route('categories.destroy', $category->id ) }}" method="POST">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                            <button class="btn btn-danger">Delete</button>
-                                                        </form>
-                                                    </div>
-                                                    </div>
+                <form action="{{ route('categories.destroy', $category->id ) }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
         <form method="POST" action="/categories/{{ $category->id }}">
             @csrf
             @method('PUT')
@@ -50,8 +50,8 @@
                             <div class="form-group row">
                                 <div class="col">
                                     <label>Description</label>
-                                    <textarea class="form-control" name="category_description"
-                                        rows="4" placeholder="{{ __('Description...') }}" required>
+                                    <textarea class="form-control" name="category_description" rows="4"
+                                        placeholder="{{ __('Description...') }}" required>
                                     {{ $category->category_description }}</textarea>
                                 </div>
                             </div>
@@ -70,16 +70,5 @@
 @endsection
 
 @section('scripts')
-<!-- Page level plugin CSS-->
-<link href="{{ asset('vendor/summernote/summernote.min.css')}}" rel="stylesheet">
-<!-- Core plugin JavaScript-->
-<script src="{{ asset('vendor/summernote/summernote.min.js')}}"></script>
-<script>
-    $(document).ready(function() {
-            $('#summernote').summernote({
-                tabsize: 2,
-                height: 200
-            });      
-          });
-</script>
+
 @endsection

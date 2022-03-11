@@ -8,8 +8,7 @@
 
         @include('partials.alert')
 
-        @if(count($products) < 1) 
-        <div class="row">
+        @if(count($products) < 1) <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 {{$err_message ?? ''}}
                 <h2 class="text-dark">There are no products at the moment please check again later.</h2>
@@ -17,7 +16,7 @@
     </div>
     @else
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <h3>Categories</h3>
             <ul class="list-unstyled">
                 @foreach ($categories as $category)
@@ -28,7 +27,7 @@
                 @endforeach
             </ul>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="row">
                 @foreach ( $products as $product )
                 <div class="col-md-4">
@@ -47,7 +46,8 @@
                             <a href="/category/{{$cat->id}}/{{$cat->slug}}">{{$cat->category_name}}@if(!$loop->last),@endif
                             </a>
                             @endforeach
-                            <a class="btn btn-success float-right" href="{{url('shop/product')}}/{{$product->id}}/{{$product->slug}}">
+                            <a class="btn btn-success float-right"
+                                href="{{url('shop/product')}}/{{$product->id}}/{{$product->slug}}">
                                 View
                             </a>
                         </div>

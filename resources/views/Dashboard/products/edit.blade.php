@@ -169,16 +169,5 @@
 @endsection
 
 @section('scripts')
-<!-- Page level plugin CSS-->
-<link href="{{ asset('vendor/summernote/summernote.min.css')}}" rel="stylesheet">
-<!-- Core plugin JavaScript-->
-<script src="{{ asset('vendor/summernote/summernote.min.js')}}"></script>
-<script>
-    $(document).ready(function() {
-            $('#summernote').summernote({
-                tabsize: 2,
-                height: 200
-            });      
-          });
-</script>
+
 @endsection
