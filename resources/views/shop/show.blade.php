@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="my-5 py-5">
+<section class="my-1 py-5">
+    <div class="container">
+        <h1 class="my-2">{{$product->name}}</h1>
+
+            <div class="breadcrumb">
+                <a class="link" href="{{url('/')}}">
+                    Shop
+                </a>
+                &nbsp; / {{$product->name}}
+            </div>
+        </div>
     <div class="container">
         <div class="row">
             @if(!$product)
@@ -9,10 +19,10 @@
                 <h2 class="text-dark">The product you are looking for maybe currently unavailable.</h2>
             </div>
             @else
-            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <div class="img-container">
-                    <img src="{{asset('img/png/isometric-icons-data-collection-blob-min-uai-828x828.png')}}" width="258"
-                        height="258" alt="">
+                    <img src="{{asset('img/png/isometric-icons-data-collection-blob-min-uai-828x828.png')}}" width="100%"
+                        height="100%" alt="">
                 </div>
                 <h3 class="my-2">{{$product->name}}</h3>
                 <small>Category:
@@ -20,17 +30,24 @@
                     <a href="/category/{{$cat->id}}/{{$cat->slug}}">{{$cat->category_name}}@if(!$loop->last),@endif </a>
                     @endforeach
                 </small>
+
+                <hr />
+                <p>Description:</p>
+                <p>{!!$product->meta_description!!}</p>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
                 <br>
+                @if (count($variants) > 0)
                 <p>Variants:</p>
                 <p>
                     @foreach($variants as $var)
                     <input type="radio" id="{{$var->id}}" name="variant" value="{{$var->name}}"> <label
-                        for="{{$var->id}}">{{$var->description}}</label><br/>
+                        for="{{$var->id}}">{{$var->description}}</label><br />
                     @endforeach
                 </p>
-                <hr />
-                <p>{!!$product->meta_description!!}</p>
-            </div>
+                @endif
+                        
+                        </div>
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 <h3>Categories</h3>
                 @foreach (App\Models\Category::all() as $category)

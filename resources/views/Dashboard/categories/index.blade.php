@@ -37,7 +37,7 @@
 
                             <div class="form-group row">
                                 <label>Description</label>
-                                <textarea class="form-control" id="summernote" name="category_description" rows="9"
+                                <textarea class="form-control" name="category_description" rows="4"
                                     > {{old('category_description')}}</textarea>
                                 <small>The description is not prominent by default; however, some themes may show
                                     it.</small>

@@ -47,9 +47,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('js/dash.min.js') }}"></script>
-
+    <script src="{{ asset('js/app.js') }}"></script>
+    
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     @yield('scripts')

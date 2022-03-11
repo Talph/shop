@@ -9,6 +9,14 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+<li class="nav-item">
+    <a class="nav-link" href="{{route('shop')}}" aria-expanded="true"
+                aria-controls="collapsePost">
+                <i class="fas fa-fw fa-store"></i>
+                <span>View shop page</span></a>
+</li>
+<hr class="sidebar-divider my-0">
+
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="{{route('home')}}">

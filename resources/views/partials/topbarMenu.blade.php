@@ -19,14 +19,6 @@
         </div>
     </form>
 
-    <!-- View shop page -->
-    <button class="btn btn-link mr-3">
-            <a href="{{route('shop')}}" class="btn btn-link text-danger" >
-            View shop page
-            </a>
-        </button>
-
-
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 

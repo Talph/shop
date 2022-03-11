@@ -38,7 +38,7 @@ Generate APP_KEY
 
 <pre>php artisan key:generate</pre>
 
-Add database name/username/password inside your .env
+Create a Database in MySQL then add database name/username/password inside your .env that you created
 
 <pre>
 DB_CONNECTION=mysql<br/>

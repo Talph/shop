@@ -20,18 +20,18 @@
                     <div class="card-body">
                         <h4>Product name:</h4>
                         <p> {{ $product->name }}</p>
-                        <h4>Content:</h4>
+                        <h4>Description:</h4>
                         <p>{{ $product->meta_description }}</p>
 
                         @if(count($variants) > 0)
                     
                         Product Variants*:
                         <br/>
+                        <ul class="list-unstyled">
                         @foreach ($variants as $variant)
-                        <div class="col-md-12">    
-                        <input type="radio" name="variant" id="{{$variant->id}}"> <label for="{{$variant->id}}">{{$variant->description}}</label>
-                        </div>
+                        <input type="radio" name="variant" id="{{$variant->id}}"> <label for="{{$variant->id}}">{{$variant->description}}</label><br/>
                         @endforeach
+                        </ul>
                         @endif
 
                         <a href="{{ route('products.index') }}" class="btn btn-primary">{{ __('Return to products') }}</a>
