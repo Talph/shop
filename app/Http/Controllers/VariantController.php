@@ -21,6 +21,46 @@ class VariantController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($productid, $variantid)
+    {
+        $variant = Variant::where('product_id', $productid)
+        ->where('id', $variantid)
+        ->find($variantid);
+        $product = Product::find($productid);
+
+        return view('dashboard.variants.edit', ['variant' => $variant, 'product'=> $product]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id, $variantid)
+    {
+        $request->validate([
+            'name' => 'required|min:1|max:64',
+            'description' => 'required',
+        ]);
+
+        $variant = Variant::find($variantid);
+        $variant->name = $request->input('name');
+        $variant->description     = $request->input('description');
+        $variant->value     = $request->input('value');
+        $variant->product_id = $id;
+        $variant->save();
+
+        return redirect()->back()->with('message', 'Successfully edited product');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -49,9 +89,9 @@ class VariantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($variantid)
     {
-        $variant = Variant::find($id);
+        $variant = Variant::find($variantid);
         if ($variant) {
             $variant->delete();
         }

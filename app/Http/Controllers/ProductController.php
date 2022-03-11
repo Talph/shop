@@ -147,6 +147,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         if ($product) {
             $product->status = 'Deleted';
+            Variant::where('product_id', $id)->delete();
             $product->delete();
         }
         $product->categories()->detach();

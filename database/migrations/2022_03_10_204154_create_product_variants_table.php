@@ -18,8 +18,11 @@ return new class extends Migration
 
             $table->unsignedInteger('product_id')->index();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedInteger('variant_id')->index();
-            $table->foreign('variant_id')->references('id')->on('variants')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('name'); //Size/Quatity
+            $table->string('description'); // Single can
+            $table->string('value'); // 1kg
+
+            $table->timestamps();
         });
     }
 

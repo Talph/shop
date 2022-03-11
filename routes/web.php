@@ -29,10 +29,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('products', '\App\Http\Controllers\ProductController');
         // categories resource routes
         Route::resource('categories', '\App\Http\Controllers\CategoryController');
+
         // Variaions routes
         Route::get('/product/{id}/variants', [\App\Http\Controllers\VariantController::class, 'index'])->name('variants.index');
         Route::post('/product/{id}/variants', [\App\Http\Controllers\VariantController::class, 'store'])->name('variants.store');
-        Route::get('/product/{id}/variants/{variant}', [\App\Http\Controllers\VariantController::class, 'edit'])->name('variants.edit');
-        Route::post('/product/{id}/variants/{variant}', [\App\Http\Controllers\VariantController::class, 'update'])->name('variants.update');
-        Route::post('/product/{id}/variants/{variant}/delete', [\App\Http\Controllers\VariantController::class, 'delete'])->name('variants.destroy');
+        Route::get('/product/{productid}/variants/{variantid}/edit', [\App\Http\Controllers\VariantController::class, 'edit'])->name('variants.edit');
+        Route::put('/product/{productid}/variants/{variantid}', [\App\Http\Controllers\VariantController::class, 'update'])->name('variants.update');
+
+        Route::delete('/variants/{variantid}/delete', [\App\Http\Controllers\VariantController::class, 'destroy'])->name('variants.destroy');
 });

@@ -6,9 +6,7 @@
     <div class="animated fadeIn">
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Create Product </h1>
-        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-            For more information about DataTables, please visit the official DataTables documentation.</p>
-        <div class="createProduct my-4">
+<div class="createProduct my-4">
             <a class="btn btn-primary" href={{route('products.index')}}>{{__('View products')}}</a>
         </div>
         <form action="{{route('products.store')}}" enctype="multipart/form-data" method="POST">
@@ -134,25 +132,6 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="card mt-4 card-collapsable">
-                        <a class="card-header" href="#collapseCardImage" data-toggle="collapse" role="button"
-                            aria-expanded="true" aria-controls="collapseCardImage">
-                            {{ __('Product Variants') }}
-                        </a>
-                        <div class="collapse show" id="collapseCardImage">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <div class="col">
-                                        <br />
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
         </form>
     </div>

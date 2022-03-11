@@ -7,11 +7,7 @@
     <div class="row rounded shadow bg-gradient-white p-4 my-4">
         <div class="col-md-6">
             <h1 class="h3 mb-2 text-gray-800">Hello {{ucfirst(Auth()->user()->fname)}}!!</h1>
-
-            <p class="mb-4">Lorem Ipsum is dummy text of the printing and typesetting industry. Care to write a
-                meaningful
-                blog product?</p>
-            <div class="createProduct border-2 my-4">
+<div class="createProduct border-2 my-4">
                 <a class="btn btn-primary" href={{route('products.create')}}>{{__('Create New product')}}</a>
             </div>
 

@@ -6,9 +6,7 @@
     <div class="animated fadeIn">
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Written Posts </h1>
-        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-            For more information about DataTables, please visit the official DataTables documentation.</p>
-        <div class="createProduct my-4">
+<div class="createProduct my-4">
             <a class="btn btn-primary" href={{route('categories.index')}}>{{__('Create New Category')}}</a>
         </div>
         <div class="row">

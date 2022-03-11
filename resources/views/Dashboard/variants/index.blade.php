@@ -6,9 +6,7 @@
     <div class="animated fadeIn">
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Variants for product: {{$product->name}}</h1></h1>
-        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-            For more information about DataTables, please visit the official DataTables documentation.</p>
-
+                    <a class="btn btn-secondary float-right" href="/products/{{$product->id}}">{{__('Back to product')}}</a>
         <div class="row">
 
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -40,8 +38,7 @@
                                 <label>Description</label>
                                 <textarea class="form-control"  name="description" rows="4">
                                 {{old('description')}}</textarea>
-                                <small>The description is not prominent by default; however, some themes may show
-                                    it.</small>
+                                <small>Write product variant description e.g. 5kg, Case of 24 etc</small>
                             </div>
 
                             <button class="btn btn-block btn-success" type="submit">{{ __('Save variant') }}</button>
@@ -87,12 +84,10 @@
                                             <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                                 aria-labelledby="dropdownMenuLinkRevenue">
                                                 <div class="dropdown-header">Actions:</div>
-                                                <a href="{{ url('/variants/' . $variant->id) }}"
-                                                    class="btn dropdown-item">View</a>
-                                                <a href="{{ url('/variants/' . $variant->id . '/edit') }}"
+                                                <a href="{{ url('/product/'.$product->id. '/variants/' . $variant->id . '/edit') }}"
                                                     class="btn dropdown-item">Edit</a>
                                                 <div class="dropdown-divider"></div>
-                                                <form action="/product/$variant->products->id/variants/$variant->id/delete"
+                                                <form action="/variants/{{$variant->id}}/delete"
                                                     method="POST">
                                                     @method('DELETE')
                                                     @csrf

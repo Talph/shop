@@ -9,7 +9,7 @@ class Variant extends Model
 {
     use HasFactory;
 
-    protected $table = 'product_values';
+    protected $table = 'product_variants';
     
     public function products()
     {

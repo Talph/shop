@@ -23,9 +23,10 @@
                 <br>
                 <p>Variants:</p>
                 <p>
-                                    @foreach($variants as $var)
-                                    <input type="radio" id="{{$var->id}}" name="variant" value="{{$var->name}}"> <label for="{{$var->id}}">{{$var->description}}</label>
-                                    @endforeach
+                    @foreach($variants as $var)
+                    <input type="radio" id="{{$var->id}}" name="variant" value="{{$var->name}}"> <label
+                        for="{{$var->id}}">{{$var->description}}</label><br/>
+                    @endforeach
                 </p>
                 <hr />
                 <p>{!!$product->meta_description!!}</p>
@@ -34,7 +35,8 @@
                 <h3>Categories</h3>
                 @foreach (App\Models\Category::all() as $category)
                 <ul class="list-unstyled">
-                    <li><a href="/category/{{$category->id}}/{{$category->slug}}">{{$category->category_name}} ({{count($category->products)}})</a></li>
+                    <li><a href="/category/{{$category->id}}/{{$category->slug}}">{{$category->category_name}}
+                            ({{count($category->products)}})</a></li>
                 </ul>
                 @endforeach
                 <hr />
