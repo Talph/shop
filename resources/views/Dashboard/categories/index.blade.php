@@ -78,7 +78,7 @@
                                     <td>{{ $category->slug }}</td>
                                     <td>
                                         @if ($category->products)
-                                            {{ count($category->products) }}
+                                           <a href="products/category/{{$category->id}}"> {{ count($category->products) }} </a>
                                         @endif
                                         
                                     </td>
@@ -96,6 +96,9 @@
                                                     class="btn dropdown-item">View</a>
                                                 <a href="{{ url('/categories/' . $category->id . '/edit') }}"
                                                     class="btn dropdown-item">Edit</a>
+                                                <a href="products/category/{{$category->id}}"
+                                                    class="btn dropdown-item"
+                                                    >View Products in category</a>
                                                 <div class="dropdown-divider"></div>
                                                 <form action="{{ route('categories.destroy', $category->id ) }}"
                                                     method="POST">

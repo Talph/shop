@@ -37,4 +37,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/product/{productid}/variants/{variantid}', [\App\Http\Controllers\VariantController::class, 'update'])->name('variants.update');
 
         Route::delete('/variants/{variantid}/delete', [\App\Http\Controllers\VariantController::class, 'destroy'])->name('variants.destroy');
+
+        Route::get('/products/category/{id}', [\App\Http\Controllers\CategoryController::class, 'categoryProducts']);
 });

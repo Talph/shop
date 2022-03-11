@@ -72,7 +72,7 @@ class ProductController extends Controller
                 $product->categories()->attach($cat);
             }
         }
-        return redirect()->back()->with('message', 'Successfully edited product');
+        return redirect()->back()->with('message', 'Successfully added product');
 
     }
 

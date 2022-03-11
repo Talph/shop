@@ -75,6 +75,18 @@ class CategoryController extends Controller
     }
 
     /**
+     * Display the specified resource products in a category.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function categoryProducts($id)
+    {
+        $category = category::find($id);
+        return view('dashboard.categories.products', ['category' => $category]);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
