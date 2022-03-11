@@ -24,7 +24,7 @@
                                 <div class="form-group row">
                                     <label>Name</label>
                                     <input class="form-control @error('name') is-invalid @enderror" type="text" id="J_name" placeholder="{{ __('Name') }}"
-                                        value="{{old('name')}}" name="name" required autofocus>
+                                        value="{{old('name')}}" name="name" autofocus>
                                         @error('name')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
