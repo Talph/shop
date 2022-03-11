@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\Frontend\ProductController::class, 'index'])->name('shop');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('shop', [App\Http\Controllers\Frontend\ProductController::class, 'index'])->name('shop.index');
+Route::get('shop/product/{id}/{product}', [App\Http\Controllers\Frontend\ProductController::class, 'show'])->name('shop.show');
+Route::get('category/{id}/{category}', [App\Http\Controllers\Frontend\CategoryController::class, 'index'])->name('cat.show');
 
 Route::group(['middleware' => ['auth']], function () {
         // Product resource routes

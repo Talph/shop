@@ -13,7 +13,7 @@
 
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 
-                <form method="POST" action="/product/$variant->products->id/variants">
+                <form method="POST" action="/product/{{$product->id}}/variants">
                     @csrf
                     <div class="card">
                         <div class="card-header">
