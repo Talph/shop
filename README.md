@@ -3,9 +3,9 @@ This was done as a Job interview challenge.
 
 # Features
 
-Products
-Product categories
-Product variants
+Products<br/>
+Product categories, Many to Many eloquent relationship<br/>
+Product variants, One to Many eloquent relationship<br/>
 
 # Requirements
 
