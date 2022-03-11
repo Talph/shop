@@ -9,7 +9,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-<li class="nav-item">
+<li class="nav-item active">
     <a class="nav-link" href="{{route('shop')}}" aria-expanded="true"
                 aria-controls="collapsePost">
                 <i class="fas fa-fw fa-store"></i>
@@ -18,7 +18,7 @@
 <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" href="{{route('home')}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

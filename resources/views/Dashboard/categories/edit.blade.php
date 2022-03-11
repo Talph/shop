@@ -5,11 +5,20 @@
 <div class="container-fluid">
     <div class="animated fadeIn">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Written Categories </h1>
-<div class="createProduct my-4">
+        <h1 class="h3 mb-2 text-gray-800">Edit category: {{$category->category_name}} </h1>
+<div class="row my-2">
+    <div class="col-md-5">
             <a class="btn btn-primary" href={{route('categories.index')}}>{{__('Create new category')}}</a>
-        </div>
-        <form method="POST" action="/ad/categories/{{ $category->id }}">
+    </div>
+            <div class="col-md-4">
+                                                        <form action="{{ route('categories.destroy', $category->id ) }}" method="POST">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                    </div>
+        <form method="POST" action="/categories/{{ $category->id }}">
             @csrf
             @method('PUT')
 
@@ -41,8 +50,8 @@
                             <div class="form-group row">
                                 <div class="col">
                                     <label>Description</label>
-                                    <textarea class="form-control" id="summernote" name="category_description"
-                                        rows="9" placeholder="{{ __('Description...') }}" required>
+                                    <textarea class="form-control" name="category_description"
+                                        rows="4" placeholder="{{ __('Description...') }}" required>
                                     {{ $category->category_description }}</textarea>
                                 </div>
                             </div>

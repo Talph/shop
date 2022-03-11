@@ -5,7 +5,7 @@
 <div class="container">
     <div class="animated fadeIn">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Written products </h1>
+        <h1 class="h3 mb-2 text-gray-800">Edit product: <span class="text-success">{{$product->name}}</span> </h1>
 <div class="row">
                 <div class="col-md-6">
         <div class="createProduct my-4">

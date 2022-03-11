@@ -5,7 +5,7 @@
 <div class="container">
     <div class="animated fadeIn">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Written products </h1>
+        <h1 class="h3 mb-2 text-gray-800">Product: {{$product->name}} </h1>
 <div class="breadcramps">
             </div>
         <div class="createProduct my-4">

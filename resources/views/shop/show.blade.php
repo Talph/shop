@@ -21,8 +21,8 @@
             @else
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <div class="img-container">
-                    <img src="{{asset('img/png/isometric-icons-data-collection-blob-min-uai-828x828.png')}}" width="100%"
-                        height="100%" alt="">
+                    <img src="{{asset('img/png/isometric-icons-data-collection-blob-min-uai-828x828.png')}}" width="258"
+                        height="258" alt="">
                 </div>
                 <h3 class="my-2">{{$product->name}}</h3>
                 <small>Category:
@@ -46,8 +46,8 @@
                     @endforeach
                 </p>
                 @endif
-                        
-                        </div>
+                        <button disabled class="btn btn-success">Buy</button>
+            </div>
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 <h3>Categories</h3>
                 @foreach (App\Models\Category::all() as $category)
