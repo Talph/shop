@@ -9,11 +9,12 @@
         @if(count($category->products) < 1) <div class="container">
             <div class="breadcrumb">
                 <a class="link" href="{{url('/')}}">
-                    Shop
+                    Shop 
                 </a>
+               &nbsp; / {{$category->category_name}}
             </div>
     </div>
-    <hr />
+
     <h2 class="text-center">
         {{$category->category_name}}
     </h2>

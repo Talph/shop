@@ -10,7 +10,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-       <!-- Fonts -->
+        <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
@@ -22,47 +22,47 @@
         <link href="{{ asset('css/dash.min.css') }}" rel="stylesheet">
     </head>
 
-<body id="page-top">
-    <div id="app">
-        <!-- Page Wrapper -->
-        <div id="wrapper">
+    <body id="page-top">
+        <div id="app">
+            <!-- Page Wrapper -->
+            <div id="wrapper">
 
-            <!-- Side Bar Menu -->
-            @include('partials.sidebarMenu')
+                <!-- Side Bar Menu -->
+                @include('partials.sidebarMenu')
 
 
-            <!-- Content Wrapper -->
-            <div id="content-wrapper" class="d-flex flex-column">
+                <!-- Content Wrapper -->
+                <div id="content-wrapper" class="d-flex flex-column">
 
-                <!-- Main Content -->
-                <div id="content">
-                    @include('partials.topbarMenu')
-                    @yield('content')
+                    <!-- Main Content -->
+                    <div id="content">
+                        @include('partials.topbarMenu')
+                        @yield('content')
+                    </div>
+
+                    @include('partials.footer')
                 </div>
-
-                @include('partials.footer')
             </div>
         </div>
-    </div>
-    </div>
+        </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/dash.min.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-    
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-    @yield('scripts')
+        <!-- Scripts -->
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/dash.min.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
 
-    <script type="text/javascript">
-        $(document).ready( function () {
+        <!-- Core plugin JavaScript-->
+        <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+        @yield('scripts')
+
+        <script type="text/javascript">
+            $(document).ready( function () {
               $('#dataTable').DataTable();
             } );
-    </script>
+        </script>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
+        <script type="text/javascript">
+            $(document).ready(function(){
             $('#J_name').keyup(function(e){
             var str = $('#J_name').val();
             str = str.replace(/\W+(?!$)/g, '-').toLowerCase();
@@ -70,8 +70,8 @@
             $('#J_slug').attr('placeholder', str);
         });
     });
-    </script>
+        </script>
 
-</body>
+    </body>
 
 </html>

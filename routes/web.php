@@ -18,25 +18,23 @@ Route::get('/', [App\Http\Controllers\Frontend\ProductController::class, 'index'
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// Frond end shop pages
 Route::get('shop', [App\Http\Controllers\Frontend\ProductController::class, 'index'])->name('shop.index');
 Route::get('shop/product/{id}/{product}', [App\Http\Controllers\Frontend\ProductController::class, 'show'])->name('shop.show');
 Route::get('category/{id}/{category}', [App\Http\Controllers\Frontend\CategoryController::class, 'index'])->name('cat.show');
 
 Route::group(['middleware' => ['auth']], function () {
+        // Dashboard route
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         // Product resource routes
         Route::resource('products', '\App\Http\Controllers\ProductController');
         // categories resource routes
         Route::resource('categories', '\App\Http\Controllers\CategoryController');
-
+        Route::get('/products/category/{id}', [\App\Http\Controllers\CategoryController::class, 'categoryProducts']);
         // Variaions routes
         Route::get('/product/{id}/variants', [\App\Http\Controllers\VariantController::class, 'index'])->name('variants.index');
         Route::post('/product/{id}/variants', [\App\Http\Controllers\VariantController::class, 'store'])->name('variants.store');
         Route::get('/product/{productid}/variants/{variantid}/edit', [\App\Http\Controllers\VariantController::class, 'edit'])->name('variants.edit');
         Route::put('/product/{productid}/variants/{variantid}', [\App\Http\Controllers\VariantController::class, 'update'])->name('variants.update');
-
         Route::delete('/variants/{variantid}/delete', [\App\Http\Controllers\VariantController::class, 'destroy'])->name('variants.destroy');
-
-        Route::get('/products/category/{id}', [\App\Http\Controllers\CategoryController::class, 'categoryProducts']);
 });

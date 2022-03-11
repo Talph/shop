@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-<a href="/product/$product->id" class="btn btn-primary">View product</a>
+                    <a href="/product/$product->id" class="btn btn-primary">View product</a>
                 </div>
             </div>
         </div>

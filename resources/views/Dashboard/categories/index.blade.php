@@ -17,18 +17,18 @@
                         </div>
                         <div class="card-body">
                             @include('partials.alert')
-                            
+
                             <div class="form-group row">
                                 <label>Category Name</label>
-                                <input class="form-control @error('category_name') is-invalid @enderror" type="text" id="J_name"
-                                    placeholder="{{ __('Category Name') }}" value="{{old('category_name')}}"
+                                <input class="form-control @error('category_name') is-invalid @enderror" type="text"
+                                    id="J_name" placeholder="{{ __('Category Name') }}" value="{{old('category_name')}}"
                                     name="category_name" required autofocus>
                                 <small>The name is how it appears on your site.</small>
                                 @error('category_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="form-group row">
                                 <label>Slug</label>
@@ -38,24 +38,24 @@
                                 <small>The “slug” is the URL-friendly version of the name. It is usually all lowercase
                                     and contains only
                                     letters, numbers, and hyphens.</small>
-                                    @error('slug')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                    @enderror
+                                @error('slug')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
 
                             <div class="form-group row">
                                 <label>Description</label>
-                                <textarea class="form-control @error('category_description') is-invalid @enderror" name="category_description" rows="4"
-                                    > {{old('category_description')}}</textarea>
+                                <textarea class="form-control @error('category_description') is-invalid @enderror"
+                                    name="category_description" rows="4"> {{old('category_description')}}</textarea>
                                 <small>The description is not prominent by default; however, some themes may show
                                     it.</small>
-                                    @error('category_description')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                        @enderror
+                                @error('category_description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
 
                             <button class="btn btn-block btn-success" type="submit">{{ __('Save Category') }}</button>
@@ -93,9 +93,10 @@
                                     <td>{{ $category->slug }}</td>
                                     <td>
                                         @if ($category->products)
-                                           <a href="products/category/{{$category->id}}"> {{ count($category->products) }} </a>
+                                        <a href="products/category/{{$category->id}}"> {{ count($category->products) }}
+                                        </a>
                                         @endif
-                                        
+
                                     </td>
                                     <td>
                                         <div class="dropdown no-arrow">
@@ -112,8 +113,7 @@
                                                 <a href="{{ url('/categories/' . $category->id . '/edit') }}"
                                                     class="btn dropdown-item">Edit</a>
                                                 <a href="products/category/{{$category->id}}"
-                                                    class="btn dropdown-item"
-                                                    >View Products in category</a>
+                                                    class="btn dropdown-item">View Products in category</a>
                                                 <div class="dropdown-divider"></div>
                                                 <form action="{{ route('categories.destroy', $category->id ) }}"
                                                     method="POST">

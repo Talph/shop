@@ -7,10 +7,11 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Category: {{$category->category_name}} </h1>
         <div class="row">
-           <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Products') }} <a href="{{URL::previous()}}" class="float-right text-primary btn btn-link">Go back</a>
+                        {{ __('Products') }} <a href="{{URL::previous()}}"
+                            class="float-right text-primary btn btn-link">Go back</a>
                     </div>
                     <div class="card-body">
                         <br>

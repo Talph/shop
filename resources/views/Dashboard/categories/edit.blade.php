@@ -33,41 +33,43 @@
                             <div class="form-group row">
                                 <div class="col">
                                     <label>Category Name</label>
-                                    <input class="form-control @error('category_name') is-invalid @enderror" id="J_name" type="text" placeholder="{{ __('Name') }}"
-                                        name="category_name" value="{{ $category->category_name }}" required autofocus>
-                                        @error('category_name')
-                                                                                <span class="invalid-feedback" role="alert">
-                                                                                    <strong>{{ $message }}</strong>
-                                                                                </span>
-                                                                                @enderror
+                                    <input class="form-control @error('category_name') is-invalid @enderror" id="J_name"
+                                        type="text" placeholder="{{ __('Name') }}" name="category_name"
+                                        value="{{ $category->category_name }}" required autofocus>
+                                    @error('category_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col">
                                     <label>Slug</label>
-                                    <input class="form-control @error('slug') is-invalid @enderror" id="J_slug" type="text"
-                                        placeholder="{{ __('category->slug') }}" name="slug"
+                                    <input class="form-control @error('slug') is-invalid @enderror" id="J_slug"
+                                        type="text" placeholder="{{ __('category->slug') }}" name="slug"
                                         value="{{ $category->slug }}" required autofocus>
-                                        @error('slug')
-                                                                            <span class="invalid-feedback" role="alert">
-                                                                                <strong>{{ $message }}</strong>
-                                                                            </span>
-                                                                            @enderror
+                                    @error('slug')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col">
                                     <label>Description</label>
-                                    <textarea class="form-control @error('category_description') is-invalid @enderror" name="category_description" rows="4"
-                                        placeholder="{{ __('Description...') }}" required>
+                                    <textarea class="form-control @error('category_description') is-invalid @enderror"
+                                        name="category_description" rows="4" placeholder="{{ __('Description...') }}"
+                                        required>
                                     {{ $category->category_description }}</textarea>
                                     @error('category_description')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                    @enderror
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 

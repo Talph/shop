@@ -6,20 +6,20 @@
     <div class="animated fadeIn">
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Edit product: <span class="text-success">{{$product->name}}</span> </h1>
-<div class="row">
-                <div class="col-md-6">
-        <div class="createProduct my-4">
-            <a class="btn btn-primary" href={{route('products.create')}}>{{__('Create New product')}}</a>
-        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="createProduct my-4">
+                    <a class="btn btn-primary" href={{route('products.create')}}>{{__('Create New product')}}</a>
                 </div>
-                                        <div class="col-md-6">
-                                        <form action="{{ route('products.destroy', $product->id ) }}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button class="btn mt-2 btn-danger float-right">Delete</button>
-                                        </form>
-                                        </div>
             </div>
+            <div class="col-md-6">
+                <form action="{{ route('products.destroy', $product->id ) }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button class="btn mt-2 btn-danger float-right">Delete</button>
+                </form>
+            </div>
+        </div>
 
         <form method="POST" enctype="multipart/form-data" action="/products/{{ $product->id }}">
             @csrf
@@ -43,12 +43,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                                                <div class="col">
-                                                                    <label>Slug</label>
-                                                                    <input class="form-control" id="J_slug" type="text" placeholder="{{ __('$product->slug') }}" name="slug"
-                                                                        value="{{ $product->slug }}" required autofocus>
-                                                                </div>
-                                                            </div>
+                                    <div class="col">
+                                        <label>Slug</label>
+                                        <input class="form-control" id="J_slug" type="text"
+                                            placeholder="{{ __('$product->slug') }}" name="slug"
+                                            value="{{ $product->slug }}" required autofocus>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -62,8 +63,9 @@
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label>Meta description</label>
-                                    <textarea class="form-control" id="textarea-meta_desc" name="meta_description" rows="4"
-                                        placeholder="{{ __('description..') }}" required>{{$product->meta_description}}</textarea>
+                                    <textarea class="form-control" id="textarea-meta_desc" name="meta_description"
+                                        rows="4" placeholder="{{ __('description..') }}"
+                                        required>{{$product->meta_description}}</textarea>
                                     <small>A maximum of 160 characters are recommended</small>
                                 </div>
                             </div>
@@ -78,9 +80,10 @@
                         <div class="collapse show" id="collapseCardKeyword">
                             <div class="card-body">
                                 <div class="form-group row">
-                                                                    <input class="form-control" name="meta_title" type="text" placeholder="{{ __('Meta title..') }}"
-                                                                        value="{{$product->meta_title}}" required>
-                                                                </div>
+                                    <input class="form-control" name="meta_title" type="text"
+                                        placeholder="{{ __('Meta title..') }}" value="{{$product->meta_title}}"
+                                        required>
+                                </div>
                                 <div class="form-group row">
                                     <label>Target keywords</label>
                                     <input type="text" class="form-control" name="meta_keywords" rows="4"
@@ -111,7 +114,7 @@
                                 </div>
 
                                 <button class="btn btn-block btn-success" type="submit">{{ __('Save') }}</button>
-                            
+
                             </div>
                         </div>
                     </div>
@@ -135,31 +138,32 @@
                                         <br />
                                         @endforeach
                                         @else
-                                             <label for="category">No categories</label><br />
-                                             @endif
-                                            <a href="btn" data-toggle="modal" data-target="#createModal">Create category</a>
+                                        <label for="category">No categories</label><br />
+                                        @endif
+                                        <a href="btn" data-toggle="modal" data-target="#createModal">Create category</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-<div class="card mt-4 card-collapsable">
-                    <a class="card-header" href="#collapseCardImage" data-toggle="collapse" role="button" aria-expanded="true"
-                        aria-controls="collapseCardImage">
-                        {{ __('Product Variants') }}
-                    </a>
-                    <div class="collapse show" id="collapseCardImage">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <div class="col">
-                                    <br />
-                <a href="/product/{{$product->id}}/variants/" class="btn btn-secondary">Manage variants</a>
+                    <div class="card mt-4 card-collapsable">
+                        <a class="card-header" href="#collapseCardImage" data-toggle="collapse" role="button"
+                            aria-expanded="true" aria-controls="collapseCardImage">
+                            {{ __('Product Variants') }}
+                        </a>
+                        <div class="collapse show" id="collapseCardImage">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <div class="col">
+                                        <br />
+                                        <a href="/product/{{$product->id}}/variants/" class="btn btn-secondary">Manage
+                                            variants</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
                 </div>
         </form>

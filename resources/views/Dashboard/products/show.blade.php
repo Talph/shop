@@ -6,11 +6,12 @@
     <div class="animated fadeIn">
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Product: {{$product->name}} </h1>
-<div class="breadcramps">
-            </div>
+        <div class="breadcramps">
+        </div>
         <div class="createProduct my-4">
             <a class="btn btn-primary" href={{route('products.create')}}>{{__('Create New product')}}</a>
-            <a href="{{ url('/product/' . $product->id . '/variants') }}" class="btn btn-primary float-right">Manage variants</a>
+            <a href="{{ url('/product/' . $product->id . '/variants') }}" class="btn btn-primary float-right">Manage
+                variants</a>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
@@ -24,17 +25,19 @@
                         <p>{{ $product->meta_description }}</p>
 
                         @if(count($variants) > 0)
-                    
+
                         Product Variants*:
-                        <br/>
+                        <br />
                         <ul class="list-unstyled">
-                        @foreach ($variants as $variant)
-                        <input type="radio" name="variant" id="{{$variant->id}}"> <label for="{{$variant->id}}">{{$variant->description}}</label><br/>
-                        @endforeach
+                            @foreach ($variants as $variant)
+                            <input type="radio" name="variant" id="{{$variant->id}}"> <label
+                                for="{{$variant->id}}">{{$variant->description}}</label><br />
+                            @endforeach
                         </ul>
                         @endif
 
-                        <a href="{{ route('products.index') }}" class="btn btn-primary">{{ __('Return to products') }}</a>
+                        <a href="{{ route('products.index') }}"
+                            class="btn btn-primary">{{ __('Return to products') }}</a>
                     </div>
                 </div>
             </div>

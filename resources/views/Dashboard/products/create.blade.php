@@ -6,7 +6,7 @@
     <div class="animated fadeIn">
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Create Product </h1>
-<div class="createProduct my-4">
+        <div class="createProduct my-4">
             <a class="btn btn-primary" href={{route('products.index')}}>{{__('View products')}}</a>
         </div>
         <form action="{{route('products.store')}}" enctype="multipart/form-data" method="POST">
@@ -23,23 +23,24 @@
                                 @csrf
                                 <div class="form-group row">
                                     <label>Name</label>
-                                    <input class="form-control @error('name') is-invalid @enderror" type="text" id="J_name" placeholder="{{ __('Name') }}"
-                                        value="{{old('name')}}" name="name" autofocus>
-                                        @error('name')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                        @enderror
+                                    <input class="form-control @error('name') is-invalid @enderror" type="text"
+                                        id="J_name" placeholder="{{ __('Name') }}" value="{{old('name')}}" name="name"
+                                        autofocus>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group row">
                                     <label>Slug</label>
-                                    <input class="form-control @error('slug') is-invalid @enderror" id="J_slug" type="text" name="slug" value="{{old('slug')}}" required
-                                        autofocus>
-@error('slug')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                    <input class="form-control @error('slug') is-invalid @enderror" id="J_slug"
+                                        type="text" name="slug" value="{{old('slug')}}" required autofocus>
+                                    @error('slug')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
 
                             </div>
@@ -53,26 +54,28 @@
                         <div class="collapse show" id="collapseCardMeta">
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <input class="form-control @error('meta_title') is-invalid @enderror" name="meta_title" type="text"
-                                        placeholder="{{ __('Meta title..') }}" value="{{old('meta_title')}}" required>
-                                        @error('meta_title')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                        @enderror
+                                    <input class="form-control @error('meta_title') is-invalid @enderror"
+                                        name="meta_title" type="text" placeholder="{{ __('Meta title..') }}"
+                                        value="{{old('meta_title')}}" required>
+                                    @error('meta_title')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group row">
-                                    <textarea class="form-control @error('meta_description') is-invalid @enderror" id="textarea-meta_desc" name="meta_description"
-                                        rows="4" placeholder="{{ __('Meta description..') }}"
+                                    <textarea class="form-control @error('meta_description') is-invalid @enderror"
+                                        id="textarea-meta_desc" name="meta_description" rows="4"
+                                        placeholder="{{ __('Meta description..') }}"
                                         required>{{old('meta_description')}}</textarea>
 
                                     <small>A maximum of 160 characters are recommended</small>
                                     @error('meta_description')
-                                                                            <span class="invalid-feedback" role="alert">
-                                                                                <strong>{{ $message }}</strong>
-                                                                            </span>
-                                                                            @enderror
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -86,16 +89,16 @@
                         <div class="collapse show" id="collapseCardKeyword">
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <input type="text" class="form-control @error('meta_keywords') is-invalid @enderror" name="meta_keywords" rows="4"
-                                        placeholder="{{ __('Target keywords...') }}" required
-                                        value="{{old('meta_keywords')}}" />
+                                    <input type="text" class="form-control @error('meta_keywords') is-invalid @enderror"
+                                        name="meta_keywords" rows="4" placeholder="{{ __('Target keywords...') }}"
+                                        required value="{{old('meta_keywords')}}" />
                                     <small>Separate keywords with a comma eg 'Best online store foe pet food,
                                         Cats'</small>
-                                        @error('meta_keywords')
-                                                                                <span class="invalid-feedback" role="alert">
-                                                                                    <strong>{{ $message }}</strong>
-                                                                                </span>
-                                                                                @enderror
+                                    @error('meta_keywords')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -149,8 +152,8 @@
                                 <label for="category">No categories</label><br />
                                 @endif
                                 <div class="form-group">
-                                                                    <a href="btn" data-toggle="modal" data-target="#createModal">Create category</a>
-                                                                </div>
+                                    <a href="btn" data-toggle="modal" data-target="#createModal">Create category</a>
+                                </div>
                             </div>
                         </div>
                     </div>
